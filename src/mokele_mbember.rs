@@ -89,15 +89,15 @@ pub async fn get_chain_ws(cx: &mut Context) {
         let s: Value = neh!( cl.request("chain_getRuntimeVersion",rpc_params![]).await);
         cx.spec_version = nah!(s["specVersion"].as_u64()) as u32;
         cx.transaction_version = nah!(s["transactionVersion"].as_u64()) as u32;
-    
+
         // chain_getBlockHash
         let s: Value = neh!( cl.request("chain_getBlockHash",rpc_params![]).await);
         cx.block_hash = s.to_string().trim_matches('"').to_string();
 
             log!(format!(" spec_version={} transaction_version={}", &cx.spec_version, &cx.transaction_version) );
-            log!(" genesis_hash", &cx.genesis_hash ); 
+            log!(" genesis_hash", &cx.genesis_hash );
             // log!(" transaction_version", &cx.transaction_version );
-            log!(" block_hash", &cx.block_hash );
+            // log!(" block_hash", &cx.block_hash );
     }
 }
 
@@ -105,7 +105,7 @@ pub async fn get_chain_ws(cx: &mut Context) {
 use jsonrpsee::core::client::ClientT;
 use jsonrpsee::{rpc_params, ws_client::WsClientBuilder};
 
-pub async fn moke_send_money(cx: &mut Context, from: &str, to: &str, money: u128 ) -> Option<String> {  
+pub async fn moke_send_money(cx: &mut Context, from: &str, to: &str, money: u128 ) -> Option<String> {
     log!("Money transfer", &money);
     log!("FROM", &from);
     log!("TO  ", &to);

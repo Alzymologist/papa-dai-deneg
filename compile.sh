@@ -6,6 +6,8 @@ clear
 
 RUSTFLAGS='-C target-cpu=x86-64-v3'
 #RUSTFLAGS=''
+cargo +nightly build --target x86_64-unknown-linux-gnu --release
+exit
 cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu --release
 
 
