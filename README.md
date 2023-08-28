@@ -1,36 +1,32 @@
-# get-caller-file
+# papa-dai-deneg
 
-Консольная утилита, которая позволяет перечислить пользователю тестового блокчейна типа Substrate любую сумму денег от //Alice (мы знаем, у неё денег неисчерпаемо).
+A command-line utility that allows the user to send any amount of funds from //Alice on a Substrate-based test blockchain (we know she has inexhaustible wealth).
 
 ## Installation
 
 ```bash
 cargo build
 ```
-
-Сборка для моего варианта сервера:
+Build for my server variant:
 
 ```bash
 RUSTFLAGS='-C target-cpu=x86-64-v3'
 cargo +nightly build --target x86_64-unknown-linux-gnu --release
 ```
-
 ## Usage
-
-Given:
 
 ```bash
 ./papa-dai-deneg 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please wss://node-shave.zymologia.fi:443
 ```
 
-Аргументы:
+Arguments:
 
-1. аккаунт юзера в формате 0x...;
-2. сумма условных денег;
-3. обязательный флаг --please для совместимости с красноглазыми юниксоидами и прочими занудами, которые без подобной магии в консольных строках жить не умеют;
-4. адрес вашего блокчейна с обязательным указанием порта, даже если это 80 или 443;
+1. User account in the format 0x...;
+2. Amount of hypothetical money;
+3. Mandatory flag --please for compatibility with stubborn UNIX users and others who can't live without such magic in command lines;
+4. Address of your blockchain with a mandatory port specification, even if it's 80 or 443;
 
-Зупуск во время отладки:
+Debugging launch:
 
 ```bash
 cargo watch -c -x "run -- 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please wss://node-shave.zymologia.fi:443"
@@ -39,7 +35,7 @@ cargo watch -c -x "run -- 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ec
 
 ## Other:
 
-Пример вызова в бэкенде json.php:
+Example backend call in json.php:
 
 ```php
 <?php
