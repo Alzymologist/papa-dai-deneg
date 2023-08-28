@@ -16,7 +16,7 @@ cargo +nightly build --target x86_64-unknown-linux-gnu --release
 ## Usage
 
 ```bash
-./papa-dai-deneg 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please wss://node-shave.zymologia.fi:443
+./papa-dai-deneg 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please wss://testnode.zymologia.fi:443
 ```
 
 Arguments:
@@ -29,7 +29,7 @@ Arguments:
 Debugging launch:
 
 ```bash
-cargo watch -c -x "run -- 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please wss://node-shave.zymologia.fi:443"
+cargo watch -c -x "run -- 0x8094a91dc4d98a6112374c599d4ed6592a1862d7cda654ee74ecb649ca427a4c 10000 --please ws://localhost:4499"
 
 ```
 
@@ -44,7 +44,7 @@ $j=(array)json_decode($j);
 $user=$j['user'];
 if(preg_match("/[^0-9abcdefx]+/si",$user)) die('wrong user');
 $money=7000; // $j['money'];
-unset($o); exec("/home/nodes/INSTALL/papa-dai-deneg ".$user." ".(1*$money)." --please wss://natribu.org:443 2>&1",$o);
+unset($o); exec("/home/nodes/INSTALL/papa-dai-deneg ".$user." ".(1*$money)." --please wss://natribu.org/en:443 2>&1",$o);
 die(json_encode($o));
 ?>
 ```
