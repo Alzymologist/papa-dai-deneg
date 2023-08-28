@@ -42,7 +42,7 @@ Example backend call in json.php:
 $j=file_get_contents('php://input');
 $j=(array)json_decode($j);
 $user=$j['user'];
-if(preg_match("/[^0-9abcdefx]+/si",$user)) ejie('wrong user');
+if(preg_match("/[^0-9abcdefx]+/si",$user)) die('wrong user');
 $money=7000; // $j['money'];
 unset($o); exec("/home/nodes/INSTALL/papa-dai-deneg ".$user." ".(1*$money)." --please wss://node-shave.zymologia.fi:443 2>&1",$o);
 die(json_encode($o));
