@@ -8,9 +8,10 @@ $sleep = 2;
 $version='1.04';
 
 if(isset($argv[1])) $node=$argv[1];
-if(isset($argv[2]) && 1*$argv[2]) $url=$argv[2];
+if(isset($argv[2]) && $argv[2]) $url=$argv[2];
 if(isset($argv[3]) && 1*$argv[3]) $sleep=$argv[3];
 
+echo "php ./papa-kupi-loshadku.php wss://node-shave.zymologia.fi:443 http://lleo.me/dot.php 2\n";
 echo "Make a payment every ".$sleep." sec with node: ".$node." and ajax-daemon: ".$url."\n";
 
 while(1) {
