@@ -34,6 +34,8 @@ while(1) {
 
     $kk=0;
 
+    $money_transferred = 0;
+
     while(1) { // цикл работы с одной штукой
 	$kk++;
 
@@ -72,21 +74,25 @@ while(1) {
         if($r['result']=='ready') {
 	    $x='account'; if(!isset($r[$x])) { echo "[  ERROR  ]: `$x` not found\n\n"; break; }
 	    $account = $r['account'];
-	    echo "[ DO:".$kk." ] Преводим $price денег на аккаунт $account\n\n";
-	    ////////////////////////////
+
+	    if($money_transferred) {
+		    echo "[ DO:".$kk." ] А $price денег на аккаунт $account мы уже переводили!\n\n";
+	    } else {
+		    ////////////////////////////
+		    echo "[ DO:".$kk." ] Преводим $price денег на аккаунт $account\n\n";
 		    $act = "./papa-dai-deneg ".$account." ".$price." --please ".$node."";
 		    echo "[ BLOCKCHAIN ] ".$act." \n\n";
 		    unset($o); exec($act,$o);
 
 		    $itogo = $o[sizeof($o)-1]; if(substr($itogo,0,3)!='OK ') {
-			echo "[ System Error ./papa-dai-deneg ] ".implode("\n",$o)."\n\n";
+			echo "[ System Error ./papa-dai-deneg ]\n\t\t".implode("\n\t\t",$o)."\n\n";
 			exit;
 		    }
 
-//		    echo "[[[[[[[[[[[".$o[sizeof($o)-1]."]]]]]]]]]\n\n";
-//		    exit;
-	    ////////////////////////////
-	    echo implode("\n",$o)."\n\n";
+		    $money_transferred++;
+		    echo "\t\t".implode("\n\t\t",$o)."\n\n";
+		    ////////////////////////////
+	    }
 
 	    sleep($sleep);
 	    continue;
