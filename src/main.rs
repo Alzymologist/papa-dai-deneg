@@ -68,6 +68,8 @@ fn main() -> Result<(), Error> {
     let user_to = args[1].as_str();
     let money_to = neh!( args[2].parse::<u128>() );
 
+    cx.ws_url = args[4].clone(); // "wss://node-shave.zymologia.fi:443".to_string(),
+
     let rt = Runtime::new().unwrap();
 
     let x = nah!( rt.block_on( moke_send_money(&mut cx, "Alice", user_to, money_to ) ) );
